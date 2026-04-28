@@ -1,0 +1,26 @@
+import 'package:career_lens/core/ui/colors/app_colors.dart';
+import 'package:flutter/material.dart';
+
+class AppTheme {
+  const AppTheme._();
+
+  static ThemeData get lightTheme {
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: AppColors.primaryColor,
+        brightness: Brightness.light,
+      ),
+    );
+  }
+
+  static ThemeData get darkTheme {
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: AppColors.primaryColor,
+        brightness: Brightness.dark,
+      ),
+    );
+  }
+}
