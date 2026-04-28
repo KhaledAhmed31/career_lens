@@ -9,6 +9,7 @@ class CareerLensApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Career Lens',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
