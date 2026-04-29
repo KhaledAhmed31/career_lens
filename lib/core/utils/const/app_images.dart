@@ -1,4 +1,4 @@
 class AppImages {
   const AppImages._();
-  static const String logo = 'assets/images/bg_image.png';
+  static const String bgImage = 'assets/images/bg_image.png';
 }

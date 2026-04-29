@@ -1,4 +1,5 @@
 import 'package:career_lens/core/routes/route_path.dart';
+import 'package:career_lens/features/input/presentation/pages/input_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,7 +12,7 @@ final GoRouter router = GoRouter(
       pageBuilder: (BuildContext context, GoRouterState state) {
         return CustomTransitionPage(
           key: state.pageKey,
-          child: Scaffold(),
+          child: InputPage(),
           transitionDuration: const Duration(milliseconds: 300), // Optional
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             // Use a built-in Flutter transition widget

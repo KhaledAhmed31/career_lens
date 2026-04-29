@@ -11,6 +11,13 @@ class AppTheme {
         seedColor: AppColors.primaryColor,
         brightness: Brightness.light,
       ),
+      textTheme: const TextTheme(
+        titleMedium: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+        bodySmall: TextStyle(color: AppColors.gray),
+      ),
     );
   }
 
@@ -20,6 +27,13 @@ class AppTheme {
       colorScheme: ColorScheme.fromSeed(
         seedColor: AppColors.primaryColor,
         brightness: Brightness.dark,
+      ),
+      textTheme: const TextTheme(
+        titleMedium: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+        bodySmall: TextStyle(color: AppColors.gray),
       ),
     );
   }
