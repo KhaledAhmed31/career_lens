@@ -9,4 +9,14 @@ class InputState extends Equatable {
   });
   @override
   List<Object> get props => [userSkillsState, searchResultsState];
+
+  InputState copyWith({
+    BaseState<List<SkillEntity>>? userSkillsState,
+    BaseState<List<String>>? searchResultsState,
+  }) {
+    return InputState(
+      userSkillsState: userSkillsState ?? this.userSkillsState,
+      searchResultsState: searchResultsState ?? this.searchResultsState,
+    );
+  }
 }

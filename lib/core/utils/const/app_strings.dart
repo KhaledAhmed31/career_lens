@@ -22,4 +22,6 @@ class AppStrings {
   static const String suggesstions = "Suggestions";
   static const String noMatchMessage =
       "No matches found. Please add more skills.";
+
+      
 }
