@@ -3,14 +3,22 @@ import 'package:equatable/equatable.dart';
 
 sealed class InputEvent extends Equatable {
   const InputEvent();
-
   @override
   List<Object> get props => [];
+
+  void when({
+    required void Function(String query) searchForSkill,
+    required void Function() fetchUserSkills,
+  }) {
+    if (this is SearchSkills) {
+      searchForSkill((this as SearchSkills).query);
+    } else if (this is FetchUserSkills) {
+      fetchUserSkills();
+    }
+  }
 }
 
 class FetchUserSkills extends InputEvent {}
-
-class FetchSearchResults extends InputEvent {}
 
 class AddSkill extends InputEvent {
   final String skillName;

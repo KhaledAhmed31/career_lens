@@ -1,18 +1,16 @@
-import 'package:career_lens/core/config/errors/app_exception.dart';
-
 sealed class Result<T> {
   const Result();
 
   R when<R>({
     required R Function(T? data) success,
-    required R Function(Exception? exception) error,
+    required R Function(String? errorMessage) error,
   }) {
     if (this is Success<T>) {
       return success((this as Success<T>).data);
     } else if (this is Error<T>) {
-      return error((this as Error<T>).exception);
+      return error((this as Error<T>).errorMessage);
     } else {
-      return error(Exception("Unhandled ApiResult case"));
+      return error("Unhandled ApiResult case");
     }
   }
 }
@@ -23,6 +21,6 @@ class Success<T> extends Result<T> {
 }
 
 class Error<T> extends Result<T> {
-  final AppException? exception;
-  const Error({this.exception});
+  final String? errorMessage;
+  const Error({this.errorMessage});
 }
