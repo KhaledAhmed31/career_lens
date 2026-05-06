@@ -3,5 +3,9 @@ import 'package:career_lens/features/input/domain/entities/skill_entity.dart';
 
 abstract class UserSkillsRepo {
   Future<Result<List<SkillEntity>>> getUserSkills();
-  Future<void> addSkill({required SkillEntity skill});
+  Future<void> addSkill({required List<SkillEntity> skill});
+  Future<void> updateSkillProficiency({
+    required String skillName,
+    required int proficiency,
+  });
 }

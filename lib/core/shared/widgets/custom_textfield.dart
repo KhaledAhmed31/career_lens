@@ -2,8 +2,10 @@ import 'package:career_lens/core/ui/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextfield extends StatefulWidget {
-  const CustomTextfield({super.key, required this.hint});
+  const CustomTextfield({super.key, required this.hint, this.onChange, required this.controller});
   final String hint;
+  final void Function(String)? onChange;
+  final TextEditingController controller;
   @override
   State<CustomTextfield> createState() => _CustomTextfieldState();
 }
@@ -12,6 +14,8 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
+      onChanged: widget.onChange,
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       decoration: InputDecoration(
         border: OutlineInputBorder(

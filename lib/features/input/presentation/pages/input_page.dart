@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:career_lens/core/config/di/dependency_injection.dart';
+import 'package:career_lens/core/model/service/career_predictor_service.dart';
+import 'package:career_lens/core/routes/route_path.dart';
 import 'package:career_lens/core/shared/widgets/custom_button.dart';
 import 'package:career_lens/core/shared/widgets/custom_scaffold.dart';
 import 'package:career_lens/core/shared/widgets/content_card.dart';
@@ -10,6 +14,7 @@ import 'package:career_lens/features/input/presentation/widgets/skills_list.dart
 import 'package:career_lens/features/input/presentation/widgets/title_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class InputPage extends StatelessWidget {
   const InputPage({super.key});
@@ -18,8 +23,7 @@ class InputPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       body: BlocProvider(
-        create: (context) =>
-            getIt<InputCubit>()..doIntent(SearchSkills(query: 'f')),
+        create: (context) => getIt<InputCubit>()..doIntent(FetchUserSkills()),
         child: ContentCard(
           content: [
             ...titleSection(
@@ -31,11 +35,33 @@ class InputPage extends StatelessWidget {
             AddSkillSection(),
             SizedBox(height: 12),
             Expanded(child: SkillsList()),
-            CustomButton(
-              text: AppStrings.sendButtonText,
-              padding: 60,
-              onPressed: () {
-                getIt<InputCubit>().doIntent(SearchSkills(query: 'flutter'));
+            BlocSelector<InputCubit, InputState, bool>(
+              selector: (InputState state) {
+                return state.isSearching;
+              },
+              builder: (BuildContext context, bool isSearching) {
+                if (isSearching) {
+                  return const SizedBox.shrink();
+                }
+                return CustomButton(
+                  text: AppStrings.sendButtonText,
+                  padding: 60,
+                  onPressed: () {
+                    final skills =
+                        context.read<InputCubit>().state.userSkillsState.data ??
+                        [];
+                    final skillMap = {
+                      for (var skill in skills)
+                        skill.name: skill.proficiency.toDouble(),
+                    };
+                    log('Predicting with skills===============: $skillMap');
+                    final result = CareerPredictorService.instance.predict(
+                      skillMap,
+                    );
+
+                    context.push(RoutePath.result, extra: result);
+                  },
+                );
               },
             ),
           ],

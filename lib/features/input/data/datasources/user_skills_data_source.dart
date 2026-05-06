@@ -25,13 +25,26 @@ class UserSkillsDataSource {
     }
     
   }
-  Future<void> addSkill({required SkillModel skill}){
+  Future<void> addSkill({required List<SkillModel> skill}){
     final String? skillsString = _prefs.getString(AppJson.skillsKey);
     List<SkillModel> skills = [];
     if(skillsString != null){
       skills = AppJson.decodeSkills(skillsString);
     }
-    skills.add(skill);
+    skills.addAll(skill);
     return _prefs.setString(AppJson.skillsKey, AppJson.encodeSkills(skills));
+  }
+  Future<void> updateSkillProficiency({required String skillName, required int proficiency}) async {
+    final String? skillsString = _prefs.getString(AppJson.skillsKey);
+    if (skillsString != null) {
+      List<SkillModel> skills = AppJson.decodeSkills(skillsString);
+      for (var skill in skills) {
+        if (skill.name == skillName) {
+          skill.proficiency = proficiency;
+          break;
+        }
+      }
+      await _prefs.setString(AppJson.skillsKey, AppJson.encodeSkills(skills));
+    }
   }
 }

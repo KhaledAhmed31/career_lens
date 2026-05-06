@@ -1,11 +1,12 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:career_lens/features/input/data/models/skill_model.dart';
 
 class AppJson {
   const AppJson._();
   static const String skills = 'assets/json/skills.json';
+  static const String data = 'assets/json/data.json';
+  static const String modelWeights = 'assets/json/model_weights.json';
   static const String skillsKey = 'skill_ids';
   static List<SkillModel> parseSkills(String response) {
     final jsonData = jsonDecode(response);

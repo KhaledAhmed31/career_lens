@@ -1,0 +1,850 @@
+{
+  "skills": {
+    "git": {
+      "name": "Git & GitHub",
+      "category": "Fundamentals"
+    },
+    "linux_basics": {
+      "name": "Linux Basics",
+      "category": "Fundamentals"
+    },
+    "bash_scripting": {
+      "name": "Bash Scripting",
+      "category": "Fundamentals"
+    },
+    "networking": {
+      "name": "Networking Fundamentals",
+      "category": "Fundamentals"
+    },
+    "data_structures": {
+      "name": "Data Structures",
+      "category": "Fundamentals"
+    },
+    "algorithms": {
+      "name": "Algorithms",
+      "category": "Fundamentals"
+    },
+    "oop": {
+      "name": "OOP Concepts",
+      "category": "Fundamentals"
+    },
+    "design_patterns": {
+      "name": "Design Patterns",
+      "category": "Fundamentals"
+    },
+    "html_css": {
+      "name": "HTML & CSS",
+      "category": "Web Frontend"
+    },
+    "javascript": {
+      "name": "JavaScript (ES6+)",
+      "category": "Web Frontend"
+    },
+    "typescript": {
+      "name": "TypeScript",
+      "category": "Web Frontend"
+    },
+    "react": {
+      "name": "React.js",
+      "category": "Web Frontend"
+    },
+    "react_hooks": {
+      "name": "React Hooks & Context",
+      "category": "Web Frontend"
+    },
+    "redux": {
+      "name": "Redux / Zustand",
+      "category": "Web Frontend"
+    },
+    "nextjs": {
+      "name": "Next.js",
+      "category": "Web Frontend"
+    },
+    "tailwind": {
+      "name": "Tailwind CSS",
+      "category": "Web Frontend"
+    },
+    "webpack": {
+      "name": "Webpack / Vite",
+      "category": "Web Frontend"
+    },
+    "jest": {
+      "name": "Jest / Testing Library",
+      "category": "Web Frontend"
+    },
+    "csharp": {
+      "name": "C#",
+      "category": ".NET"
+    },
+    "dotnet_core": {
+      "name": "ASP.NET Core",
+      "category": ".NET"
+    },
+    "entity_framework": {
+      "name": "Entity Framework Core",
+      "category": ".NET"
+    },
+    "sql_server": {
+      "name": "SQL Server (T-SQL)",
+      "category": ".NET"
+    },
+    "signalr": {
+      "name": "SignalR",
+      "category": ".NET"
+    },
+    "xunit": {
+      "name": "xUnit / NUnit",
+      "category": ".NET"
+    },
+    "blazor": {
+      "name": "Blazor",
+      "category": ".NET"
+    },
+    "dotnet_identity": {
+      "name": ".NET Identity & JWT",
+      "category": ".NET"
+    },
+    "nodejs": {
+      "name": "Node.js",
+      "category": "Node.js"
+    },
+    "express": {
+      "name": "Express.js",
+      "category": "Node.js"
+    },
+    "mongodb": {
+      "name": "MongoDB",
+      "category": "Node.js"
+    },
+    "mongoose": {
+      "name": "Mongoose ODM",
+      "category": "Node.js"
+    },
+    "graphql": {
+      "name": "GraphQL",
+      "category": "Node.js"
+    },
+    "socket_io": {
+      "name": "Socket.IO",
+      "category": "Node.js"
+    },
+    "nestjs": {
+      "name": "NestJS",
+      "category": "Node.js"
+    },
+    "jwt_node": {
+      "name": "JWT / Passport.js",
+      "category": "Node.js"
+    },
+    "python": {
+      "name": "Python",
+      "category": "Python"
+    },
+    "django": {
+      "name": "Django",
+      "category": "Django"
+    },
+    "drf": {
+      "name": "Django REST Framework",
+      "category": "Django"
+    },
+    "postgresql": {
+      "name": "PostgreSQL",
+      "category": "Django"
+    },
+    "celery": {
+      "name": "Celery (Task Queue)",
+      "category": "Django"
+    },
+    "redis": {
+      "name": "Redis",
+      "category": "Django"
+    },
+    "fastapi": {
+      "name": "FastAPI",
+      "category": "Django"
+    },
+    "sqlalchemy": {
+      "name": "SQLAlchemy",
+      "category": "Django"
+    },
+    "rest_api": {
+      "name": "REST API Design",
+      "category": "Backend General"
+    },
+    "docker": {
+      "name": "Docker",
+      "category": "Backend General"
+    },
+    "docker_compose": {
+      "name": "Docker Compose",
+      "category": "Backend General"
+    },
+    "nginx": {
+      "name": "Nginx",
+      "category": "Backend General"
+    },
+    "ci_cd": {
+      "name": "CI/CD Pipelines",
+      "category": "Backend General"
+    },
+    "microservices": {
+      "name": "Microservices Architecture",
+      "category": "Backend General"
+    },
+    "message_queue": {
+      "name": "RabbitMQ / Kafka",
+      "category": "Backend General"
+    },
+    "kali_linux": {
+      "name": "Kali Linux",
+      "category": "Penetration Testing"
+    },
+    "burp_suite": {
+      "name": "Burp Suite",
+      "category": "Penetration Testing"
+    },
+    "metasploit": {
+      "name": "Metasploit Framework",
+      "category": "Penetration Testing"
+    },
+    "nmap": {
+      "name": "Nmap",
+      "category": "Penetration Testing"
+    },
+    "web_app_pentest": {
+      "name": "Web App Penetration Testing",
+      "category": "Penetration Testing"
+    },
+    "owasp_top10": {
+      "name": "OWASP Top 10",
+      "category": "Penetration Testing"
+    },
+    "network_pentest": {
+      "name": "Network Penetration Testing",
+      "category": "Penetration Testing"
+    },
+    "active_directory": {
+      "name": "Active Directory Attacks",
+      "category": "Penetration Testing"
+    },
+    "privesc": {
+      "name": "Privilege Escalation",
+      "category": "Penetration Testing"
+    },
+    "social_eng": {
+      "name": "Social Engineering",
+      "category": "Penetration Testing"
+    },
+    "ctf_skills": {
+      "name": "CTF & Capture The Flag",
+      "category": "Penetration Testing"
+    },
+    "report_writing": {
+      "name": "Pentest Report Writing",
+      "category": "Penetration Testing"
+    },
+    "vapt_workflow": {
+      "name": "VAPT Methodology",
+      "category": "Penetration Testing"
+    },
+    "oscp_prep": {
+      "name": "OSCP Preparation",
+      "category": "Penetration Testing"
+    },
+    "siem": {
+      "name": "SIEM (Splunk / QRadar)",
+      "category": "SOC Analyst"
+    },
+    "wireshark": {
+      "name": "Wireshark",
+      "category": "SOC Analyst"
+    },
+    "incident_response": {
+      "name": "Incident Response",
+      "category": "SOC Analyst"
+    },
+    "threat_hunting": {
+      "name": "Threat Hunting",
+      "category": "SOC Analyst"
+    },
+    "ids_ips": {
+      "name": "IDS / IPS Systems",
+      "category": "SOC Analyst"
+    },
+    "firewall_config": {
+      "name": "Firewall Configuration",
+      "category": "SOC Analyst"
+    },
+    "log_analysis": {
+      "name": "Log Analysis",
+      "category": "SOC Analyst"
+    },
+    "vulnerability_mgmt": {
+      "name": "Vulnerability Management",
+      "category": "SOC Analyst"
+    },
+    "mitre_attack": {
+      "name": "MITRE ATT&CK Framework",
+      "category": "SOC Analyst"
+    },
+    "threat_intel": {
+      "name": "Threat Intelligence",
+      "category": "SOC Analyst"
+    },
+    "forensics_basics": {
+      "name": "Digital Forensics Fundamentals",
+      "category": "Digital Forensics"
+    },
+    "disk_forensics": {
+      "name": "Disk & File System Forensics",
+      "category": "Digital Forensics"
+    },
+    "memory_forensics": {
+      "name": "Memory Forensics (Volatility)",
+      "category": "Digital Forensics"
+    },
+    "network_forensics": {
+      "name": "Network Forensics",
+      "category": "Digital Forensics"
+    },
+    "autopsy_ftk": {
+      "name": "Autopsy / FTK Tools",
+      "category": "Digital Forensics"
+    },
+    "chain_of_custody": {
+      "name": "Chain of Custody & Evidence",
+      "category": "Digital Forensics"
+    },
+    "mobile_forensics": {
+      "name": "Mobile Device Forensics",
+      "category": "Digital Forensics"
+    },
+    "steganography": {
+      "name": "Steganography Detection",
+      "category": "Digital Forensics"
+    },
+    "reverse_engineering": {
+      "name": "Reverse Engineering",
+      "category": "Malware Analysis"
+    },
+    "assembly_lang": {
+      "name": "x86/x64 Assembly",
+      "category": "Malware Analysis"
+    },
+    "ida_pro": {
+      "name": "IDA Pro / Ghidra",
+      "category": "Malware Analysis"
+    },
+    "dynamic_analysis": {
+      "name": "Dynamic Malware Analysis",
+      "category": "Malware Analysis"
+    },
+    "static_analysis": {
+      "name": "Static Malware Analysis",
+      "category": "Malware Analysis"
+    },
+    "sandbox_analysis": {
+      "name": "Sandbox Environments",
+      "category": "Malware Analysis"
+    },
+    "yara_rules": {
+      "name": "YARA Rules",
+      "category": "Malware Analysis"
+    },
+    "malware_types": {
+      "name": "Malware Types & Behavior",
+      "category": "Malware Analysis"
+    },
+    "kotlin": {
+      "name": "Kotlin",
+      "category": "Android"
+    },
+    "android_sdk": {
+      "name": "Android SDK / Studio",
+      "category": "Android"
+    },
+    "jetpack_compose": {
+      "name": "Jetpack Compose",
+      "category": "Android"
+    },
+    "android_arch": {
+      "name": "Android Architecture (MVVM/MVI)",
+      "category": "Android"
+    },
+    "room_db": {
+      "name": "Room Database",
+      "category": "Android"
+    },
+    "retrofit": {
+      "name": "Retrofit / OkHttp",
+      "category": "Android"
+    },
+    "coroutines": {
+      "name": "Kotlin Coroutines & Flow",
+      "category": "Android"
+    },
+    "hilt_di": {
+      "name": "Hilt Dependency Injection",
+      "category": "Android"
+    },
+    "android_testing": {
+      "name": "Android Testing (Espresso)",
+      "category": "Android"
+    },
+    "play_store": {
+      "name": "Google Play Store Publishing",
+      "category": "Android"
+    },
+    "swift": {
+      "name": "Swift",
+      "category": "iOS"
+    },
+    "swiftui": {
+      "name": "SwiftUI",
+      "category": "iOS"
+    },
+    "uikit": {
+      "name": "UIKit",
+      "category": "iOS"
+    },
+    "xcode": {
+      "name": "Xcode",
+      "category": "iOS"
+    },
+    "core_data": {
+      "name": "Core Data",
+      "category": "iOS"
+    },
+    "ios_networking": {
+      "name": "URLSession / Alamofire",
+      "category": "iOS"
+    },
+    "combine_rxswift": {
+      "name": "Combine / RxSwift",
+      "category": "iOS"
+    },
+    "ios_arch": {
+      "name": "iOS Architecture (MVVM/VIPER)",
+      "category": "iOS"
+    },
+    "app_store": {
+      "name": "App Store Publishing",
+      "category": "iOS"
+    },
+    "dart": {
+      "name": "Dart",
+      "category": "Flutter"
+    },
+    "flutter_sdk": {
+      "name": "Flutter SDK",
+      "category": "Flutter"
+    },
+    "flutter_widgets": {
+      "name": "Flutter Widgets & Layouts",
+      "category": "Flutter"
+    },
+    "flutter_state": {
+      "name": "State Management (BLoC/Provider/Riverpod)",
+      "category": "Flutter"
+    },
+    "flutter_nav": {
+      "name": "Flutter Navigation (GoRouter)",
+      "category": "Flutter"
+    },
+    "flutter_firebase": {
+      "name": "Flutter + Firebase",
+      "category": "Flutter"
+    },
+    "flutter_testing": {
+      "name": "Flutter Testing",
+      "category": "Flutter"
+    },
+    "flutter_publish": {
+      "name": "Cross-platform Publishing",
+      "category": "Flutter"
+    },
+    "aws_core": {
+      "name": "AWS Core Services (EC2, S3, VPC)",
+      "category": "Cloud"
+    },
+    "aws_advanced": {
+      "name": "AWS Advanced (Lambda, EKS, RDS)",
+      "category": "Cloud"
+    },
+    "azure_core": {
+      "name": "Microsoft Azure Core",
+      "category": "Cloud"
+    },
+    "terraform": {
+      "name": "Terraform (IaC)",
+      "category": "Cloud"
+    },
+    "kubernetes": {
+      "name": "Kubernetes (K8s)",
+      "category": "Cloud"
+    },
+    "helm": {
+      "name": "Helm Charts",
+      "category": "Cloud"
+    },
+    "github_actions": {
+      "name": "GitHub Actions",
+      "category": "Cloud"
+    },
+    "prometheus": {
+      "name": "Prometheus & Grafana",
+      "category": "Cloud"
+    },
+    "cloud_security": {
+      "name": "Cloud Security & IAM",
+      "category": "Cloud"
+    },
+    "devops_practices": {
+      "name": "DevOps Practices & Culture",
+      "category": "Cloud"
+    },
+    "numpy_pandas": {
+      "name": "NumPy & Pandas",
+      "category": "AI/ML"
+    },
+    "matplotlib": {
+      "name": "Matplotlib & Seaborn",
+      "category": "AI/ML"
+    },
+    "sklearn": {
+      "name": "Scikit-learn",
+      "category": "AI/ML"
+    },
+    "ml_algorithms": {
+      "name": "ML Algorithms (Supervised/Unsupervised)",
+      "category": "AI/ML"
+    },
+    "deep_learning": {
+      "name": "Deep Learning (Neural Networks)",
+      "category": "AI/ML"
+    },
+    "pytorch": {
+      "name": "PyTorch",
+      "category": "AI/ML"
+    },
+    "tensorflow": {
+      "name": "TensorFlow / Keras",
+      "category": "AI/ML"
+    },
+    "nlp": {
+      "name": "NLP & Transformers",
+      "category": "AI/ML"
+    },
+    "computer_vision": {
+      "name": "Computer Vision (OpenCV)",
+      "category": "AI/ML"
+    },
+    "mlops": {
+      "name": "MLOps & Model Deployment",
+      "category": "AI/ML"
+    },
+    "feature_eng": {
+      "name": "Feature Engineering & EDA",
+      "category": "AI/ML"
+    },
+    "sql_for_data": {
+      "name": "SQL for Data Analysis",
+      "category": "AI/ML"
+    }
+  },
+  "tracks": {
+    "frontend_react": {
+      "name": "Front-End React Developer",
+      "icon": "\u269b\ufe0f",
+      "color": "#61DAFB",
+      "description": "Build modern, responsive web UIs with React and the JS ecosystem.",
+      "required_skills": {
+        "html_css": 75,
+        "javascript": 80,
+        "typescript": 65,
+        "react": 80,
+        "react_hooks": 75,
+        "redux": 60,
+        "nextjs": 60,
+        "tailwind": 60,
+        "webpack": 50,
+        "jest": 55,
+        "git": 70,
+        "rest_api": 60
+      }
+    },
+    "backend_dotnet": {
+      "name": "Back-End .NET Developer",
+      "icon": "\ud83d\udd37",
+      "color": "#512BD4",
+      "description": "Enterprise-grade APIs and services using C#, ASP.NET Core, and SQL Server.",
+      "required_skills": {
+        "csharp": 80,
+        "dotnet_core": 80,
+        "entity_framework": 70,
+        "sql_server": 70,
+        "rest_api": 75,
+        "dotnet_identity": 65,
+        "signalr": 50,
+        "xunit": 60,
+        "docker": 60,
+        "git": 70,
+        "design_patterns": 65,
+        "oop": 75
+      }
+    },
+    "fullstack_dotnet": {
+      "name": "Full-Stack .NET Developer",
+      "icon": "\ud83c\udfd7\ufe0f",
+      "color": "#7B2FBE",
+      "description": "End-to-end web development with ASP.NET Core APIs and React frontend.",
+      "required_skills": {
+        "csharp": 75,
+        "dotnet_core": 75,
+        "entity_framework": 65,
+        "sql_server": 65,
+        "rest_api": 70,
+        "dotnet_identity": 60,
+        "html_css": 65,
+        "javascript": 70,
+        "react": 70,
+        "typescript": 60,
+        "docker": 55,
+        "git": 75,
+        "design_patterns": 60,
+        "oop": 75
+      }
+    },
+    "fullstack_node": {
+      "name": "Full-Stack Node.js Developer",
+      "icon": "\ud83d\udfe2",
+      "color": "#339933",
+      "description": "JavaScript end-to-end with Node/Express APIs and React/Next.js frontend.",
+      "required_skills": {
+        "javascript": 80,
+        "typescript": 65,
+        "nodejs": 80,
+        "express": 75,
+        "mongodb": 70,
+        "mongoose": 65,
+        "rest_api": 70,
+        "jwt_node": 60,
+        "html_css": 65,
+        "react": 70,
+        "nextjs": 60,
+        "docker": 55,
+        "git": 75
+      }
+    },
+    "fullstack_django": {
+      "name": "Django / Python Web Developer",
+      "icon": "\ud83d\udc0d",
+      "color": "#092E20",
+      "description": "Rapid, secure web apps with Django, DRF, and PostgreSQL.",
+      "required_skills": {
+        "python": 80,
+        "django": 80,
+        "drf": 75,
+        "postgresql": 65,
+        "redis": 55,
+        "celery": 50,
+        "sqlalchemy": 50,
+        "rest_api": 70,
+        "html_css": 60,
+        "docker": 55,
+        "git": 70,
+        "oop": 70
+      }
+    },
+    "penetration_testing": {
+      "name": "Penetration Tester",
+      "icon": "\ud83d\udd13",
+      "color": "#FF4757",
+      "description": "Ethical hacking, vulnerability assessment, and VAPT reporting.",
+      "required_skills": {
+        "linux_basics": 80,
+        "kali_linux": 80,
+        "networking": 75,
+        "burp_suite": 80,
+        "metasploit": 75,
+        "nmap": 75,
+        "web_app_pentest": 75,
+        "owasp_top10": 80,
+        "network_pentest": 70,
+        "active_directory": 65,
+        "privesc": 70,
+        "vapt_workflow": 75,
+        "report_writing": 65,
+        "ctf_skills": 60,
+        "bash_scripting": 65
+      }
+    },
+    "soc_analyst": {
+      "name": "SOC Analyst (Blue Team)",
+      "icon": "\ud83d\udee1\ufe0f",
+      "color": "#1E90FF",
+      "description": "Monitor, detect, and respond to security threats in enterprise environments.",
+      "required_skills": {
+        "networking": 75,
+        "linux_basics": 70,
+        "siem": 80,
+        "wireshark": 75,
+        "incident_response": 75,
+        "log_analysis": 75,
+        "threat_hunting": 65,
+        "ids_ips": 70,
+        "firewall_config": 65,
+        "vulnerability_mgmt": 65,
+        "mitre_attack": 70,
+        "threat_intel": 60
+      }
+    },
+    "digital_forensics": {
+      "name": "Digital Forensics Analyst",
+      "icon": "\ud83d\udd0d",
+      "color": "#FFA502",
+      "description": "Collect, preserve, and analyze digital evidence for investigations.",
+      "required_skills": {
+        "linux_basics": 70,
+        "networking": 65,
+        "forensics_basics": 80,
+        "disk_forensics": 75,
+        "memory_forensics": 75,
+        "network_forensics": 70,
+        "autopsy_ftk": 75,
+        "chain_of_custody": 70,
+        "mobile_forensics": 60,
+        "steganography": 55,
+        "log_analysis": 65,
+        "report_writing": 70
+      }
+    },
+    "malware_analysis": {
+      "name": "Malware Analyst & Reverse Engineer",
+      "icon": "\ud83e\udda0",
+      "color": "#CF6679",
+      "description": "Analyze malicious code statically and dynamically to understand attack vectors.",
+      "required_skills": {
+        "linux_basics": 70,
+        "assembly_lang": 75,
+        "reverse_engineering": 80,
+        "ida_pro": 75,
+        "dynamic_analysis": 75,
+        "static_analysis": 80,
+        "sandbox_analysis": 70,
+        "yara_rules": 65,
+        "malware_types": 75,
+        "networking": 65,
+        "python": 60,
+        "bash_scripting": 60
+      }
+    },
+    "android_dev": {
+      "name": "Android Native Developer",
+      "icon": "\ud83e\udd16",
+      "color": "#3DDC84",
+      "description": "Native Android apps with Kotlin, Jetpack Compose, and modern architecture.",
+      "required_skills": {
+        "kotlin": 80,
+        "android_sdk": 80,
+        "jetpack_compose": 75,
+        "android_arch": 70,
+        "room_db": 65,
+        "retrofit": 70,
+        "coroutines": 70,
+        "hilt_di": 60,
+        "android_testing": 55,
+        "play_store": 50,
+        "git": 65,
+        "oop": 70
+      }
+    },
+    "ios_dev": {
+      "name": "iOS Native Developer",
+      "icon": "\ud83c\udf4e",
+      "color": "#555555",
+      "description": "Native iOS apps with Swift, SwiftUI, and Apple's ecosystem.",
+      "required_skills": {
+        "swift": 80,
+        "swiftui": 75,
+        "uikit": 65,
+        "xcode": 80,
+        "core_data": 60,
+        "ios_networking": 65,
+        "combine_rxswift": 60,
+        "ios_arch": 65,
+        "app_store": 55,
+        "git": 65,
+        "oop": 70,
+        "design_patterns": 55
+      }
+    },
+    "flutter_dev": {
+      "name": "Flutter Developer",
+      "icon": "\ud83d\udc99",
+      "color": "#02569B",
+      "description": "Cross-platform mobile apps (iOS + Android) with Flutter and Dart.",
+      "required_skills": {
+        "dart": 80,
+        "flutter_sdk": 80,
+        "flutter_widgets": 75,
+        "flutter_state": 75,
+        "flutter_nav": 65,
+        "flutter_firebase": 60,
+        "flutter_testing": 55,
+        "flutter_publish": 55,
+        "git": 65,
+        "oop": 65,
+        "rest_api": 60
+      }
+    },
+    "cloud_devops": {
+      "name": "Cloud & DevOps Engineer",
+      "icon": "\u2601\ufe0f",
+      "color": "#FF9900",
+      "description": "Design, deploy, and operate scalable cloud-native infrastructure.",
+      "required_skills": {
+        "linux_basics": 75,
+        "bash_scripting": 70,
+        "docker": 80,
+        "docker_compose": 70,
+        "kubernetes": 75,
+        "helm": 60,
+        "terraform": 70,
+        "aws_core": 75,
+        "aws_advanced": 65,
+        "azure_core": 55,
+        "ci_cd": 75,
+        "github_actions": 70,
+        "prometheus": 60,
+        "cloud_security": 65,
+        "devops_practices": 70,
+        "nginx": 60,
+        "git": 75
+      }
+    },
+    "ai_data_science": {
+      "name": "AI & Data Science Engineer",
+      "icon": "\ud83e\udde0",
+      "color": "#FF6B6B",
+      "description": "Build intelligent systems with ML, deep learning, and data analysis pipelines.",
+      "required_skills": {
+        "python": 85,
+        "numpy_pandas": 80,
+        "matplotlib": 70,
+        "sql_for_data": 65,
+        "sklearn": 75,
+        "ml_algorithms": 80,
+        "feature_eng": 70,
+        "deep_learning": 75,
+        "pytorch": 70,
+        "tensorflow": 65,
+        "nlp": 60,
+        "computer_vision": 55,
+        "mlops": 55,
+        "git": 65
+      }
+    }
+  }
+}

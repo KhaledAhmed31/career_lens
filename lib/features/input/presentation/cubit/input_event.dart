@@ -9,26 +9,56 @@ sealed class InputEvent extends Equatable {
   void when({
     required void Function(String query) searchForSkill,
     required void Function() fetchUserSkills,
+    required void Function(SkillEntity skill) addToCheckedSkills,
+    required void Function() addSkills,
+    required void Function(String skillName) removeSkill,
+    required void Function(String skillName, int proficiency) updateSkillProficiency,
+    required void Function(String skillName) removeFromCheckedSkills
+
   }) {
     if (this is SearchSkills) {
       searchForSkill((this as SearchSkills).query);
     } else if (this is FetchUserSkills) {
       fetchUserSkills();
+    } else if (this is AddToCheckedSkills){
+      addToCheckedSkills((this as AddToCheckedSkills).skill);
+    } else if (this is AddSkills){
+      addSkills();
+    } else if (this is RemoveSkill){
+      removeSkill((this as RemoveSkill).skillName);
+    } else if (this is UpdateSkillProficiency){
+      final event = this as UpdateSkillProficiency;
+      updateSkillProficiency(event.skillName, event.proficiency);
+    } else if (this is RemoveFromCheckedSkills){
+      removeSkill((this as RemoveFromCheckedSkills).skillName);
     }
   }
 }
 
 class FetchUserSkills extends InputEvent {}
 
-class AddSkill extends InputEvent {
+class AddToCheckedSkills extends InputEvent {
+  final SkillEntity skill;
+
+  const AddToCheckedSkills({required this.skill});
+
+  @override
+  List<Object> get props => [skill];
+}
+class AddSkills extends InputEvent {
+
+  const AddSkills();
+
+}
+
+class RemoveFromCheckedSkills extends InputEvent {
   final String skillName;
 
-  const AddSkill({required this.skillName});
+  const RemoveFromCheckedSkills({required this.skillName});
 
   @override
   List<Object> get props => [skillName];
 }
-
 class RemoveSkill extends InputEvent {
   final String skillName;
 
