@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:career_lens/core/config/di/dependency_injection.dart';
 import 'package:career_lens/core/ui/colors/app_colors.dart';
+import 'package:career_lens/features/input/domain/entities/skill_entity.dart';
 import 'package:career_lens/features/input/presentation/cubit/input_cubit.dart';
 import 'package:career_lens/features/input/presentation/cubit/input_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class StrokeThumbShape extends SliderComponentShape {
   final double radius;
@@ -103,8 +105,11 @@ class _SkillCardState extends State<SkillCard> {
                   inactiveTrackColor: Colors.transparent,
                   thumbColor: Colors.white,
                   overlappingShapeStrokeColor: AppColors.primaryColor,
-
-                  thumbShape: const StrokeThumbShape(radius: 6, borderWidth: 5),
+    
+                  thumbShape: const StrokeThumbShape(
+                    radius: 6,
+                    borderWidth: 5,
+                  ),
                 ),
                 child: Container(
                   height: 10,
@@ -115,26 +120,29 @@ class _SkillCardState extends State<SkillCard> {
                     ),
                     borderRadius: BorderRadius.circular(16.0),
                   ),
-
+    
                   child: Slider(
                     padding: EdgeInsets.zero,
                     value: _value,
                     min: 0,
                     max: 100,
                     onChanged: (val) {
-                      _debounceTimer?.cancel();
-                      _debounceTimer = Timer(
-                        const Duration(milliseconds: 300),
-                        () {
-                          getIt<InputCubit>().doIntent(
-                            UpdateSkillProficiency(
-                              skillName: widget.title,
-                              proficiency: val.round(),
-                            ),
-                          );
-                        },
-                      );
                       setState(() => _value = val);
+                      _debounceTimer != null
+                          ? _debounceTimer?.cancel()
+                          : _debounceTimer = Timer(
+                              const Duration(milliseconds: 300),
+                              () {
+                                getIt<InputCubit>().doIntent(
+                                  UpdateSkillProficiency(
+                                    skill: SkillEntity(
+                                      name: widget.title,
+                                      proficiency: val.toInt(),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
                     },
                   ),
                 ),

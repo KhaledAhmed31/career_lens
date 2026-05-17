@@ -40,16 +40,16 @@ class InputPage extends StatelessWidget {
                 return state.isSearching;
               },
               builder: (BuildContext context, bool isSearching) {
-                if (isSearching) {
-                  return const SizedBox.shrink();
-                }
+                if (isSearching) return const SizedBox.shrink();
                 return CustomButton(
                   text: AppStrings.sendButtonText,
                   padding: 60,
                   onPressed: () {
                     final skills =
-                        context.read<InputCubit>().state.userSkillsState.data ??
-                        [];
+                        context
+                            .read<InputCubit>()
+                            .state
+                            .selectedSkill;
                     final skillMap = {
                       for (var skill in skills)
                         skill.name: skill.proficiency.toDouble(),

@@ -9,7 +9,7 @@ class SkillSearchRepoImpl implements SkillSearchRepo {
   final SkillSearchDataSource _dataSource;
   SkillSearchRepoImpl(this._dataSource);
   @override
-  Future<Result<List<SkillEntity>>> getSkills() async {
+  Future<Result<List<SkillEntity>>> getSkillsListForSearch() async {
     final result = await _dataSource.getAllSkills();
     return result.when(
       success: (skills) => Success(

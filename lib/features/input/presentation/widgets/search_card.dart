@@ -28,19 +28,17 @@ class _SearchCardState extends State<SearchCard> {
           Checkbox(
             value: isChecked,
             onChanged: (value) {
-              setState(() {
-                isChecked = value ?? false;
-                getIt<InputCubit>().doIntent(
-                  isChecked
-                      ? AddToCheckedSkills(
-                          skill: SkillEntity(
-                            name: widget.title,
-                            proficiency: 0,
-                          ),
-                        )
-                      : RemoveFromCheckedSkills(skillName: widget.title),
-                );
-              });
+              isChecked = !isChecked;
+              getIt<InputCubit>().doIntent(
+                isChecked
+                    ? AddToCheckedSkills(
+                        skill: SkillEntity(name: widget.title, proficiency: 0),
+                      )
+                    : RemoveFromCheckedSkills(
+                        skill: SkillEntity(name: widget.title, proficiency: 0),
+                      ),
+              );
+              setState(() {});
             },
           ),
         ],

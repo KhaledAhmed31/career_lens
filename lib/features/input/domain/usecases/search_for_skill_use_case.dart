@@ -4,8 +4,9 @@ import 'package:career_lens/features/input/domain/repositories/skill_search_repo
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class SearchForSkillUseCase {
+class GetSkillsListForSearchUseCase {
   final SkillSearchRepo _skillSearchRepo;
-  SearchForSkillUseCase(this._skillSearchRepo);
-  Future<Result<List<SkillEntity>>> call() => _skillSearchRepo.getSkills();
+  GetSkillsListForSearchUseCase(this._skillSearchRepo);
+  Future<Result<List<SkillEntity>>> call() =>
+      _skillSearchRepo.getSkillsListForSearch();
 }

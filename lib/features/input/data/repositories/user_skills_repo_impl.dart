@@ -32,15 +32,16 @@ class UserSkillsRepoImpl implements UserSkillsRepo {
 
   @override
   Future<void> addSkill({required List<SkillEntity> skill}) {
-    final skillModels = skill.map(
-      (s) => SkillModel(
-        name: s.name,
-        proficiency: s.proficiency,
-      ),
-    ).toList();
+    final skillModels = skill
+        .map((s) => SkillModel(name: s.name, proficiency: s.proficiency))
+        .toList();
     return _dataSource.addSkill(skill: skillModels);
   }
 
+  @override
+  void removeSkill({required String skillName}) =>
+      _dataSource.removeSkill(skillName: skillName);
+      
   @override
   Future<void> updateSkillProficiency({
     required String skillName,

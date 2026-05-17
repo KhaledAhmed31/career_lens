@@ -6,6 +6,7 @@ import 'package:career_lens/core/config/errors/failure.dart';
 import 'package:career_lens/features/input/domain/entities/skill_entity.dart';
 import 'package:career_lens/features/input/domain/usecases/add_skills_use_case.dart';
 import 'package:career_lens/features/input/domain/usecases/get_user_skills_use_case.dart';
+import 'package:career_lens/features/input/domain/usecases/remove_user_skill_use_case.dart';
 import 'package:career_lens/features/input/domain/usecases/search_for_skill_use_case.dart';
 import 'package:career_lens/features/input/domain/usecases/update_skill_proficiency_use_case.dart';
 import 'package:career_lens/features/input/presentation/cubit/input_event.dart';
@@ -17,148 +18,144 @@ part 'input_state.dart';
 
 @lazySingleton
 class InputCubit extends Cubit<InputState> {
-  final SearchForSkillUseCase getallSkillUseCase;
+  final GetSkillsListForSearchUseCase getSearchSkillsList;
+  final RemoveUserSkillUseCase removeUserSkillUseCase;
   final GetUserSkillsUseCase getUserSkillsUseCase;
   final AddSkillsUseCase addSkillsUseCase;
   final UpdateSkillProficiencyUseCase updateSkillProficiencyUseCase;
   Timer? _debounceTimer;
   InputCubit({
-    required this.getallSkillUseCase,
+    required this.getSearchSkillsList,
     required this.getUserSkillsUseCase,
     required this.addSkillsUseCase,
     required this.updateSkillProficiencyUseCase,
+    required this.removeUserSkillUseCase,
   }) : super(InputState());
 
   void doIntent(InputEvent intent) {
     log('Intent: $intent');
     intent.when(
       searchForSkill: _searchForSkill,
-      fetchUserSkills: _getUserSkills,
-      addToCheckedSkills: _addToCheckedSkills,
-      addSkills: _addSkill,
-      removeFromCheckedSkills: _removeFromCheckedSkills,
-      removeSkill: (_) {},
-      updateSkillProficiency: _updateSkillProficiency,
+      fetchUserSkills: _getStoredSkills,
+      addToCheckSkills: _addToCheckList,
+      addSkills: _addToSelectedList,
+      removeSkill: _removeUserSkill,
+      updateSkillProficiency: _updateProficiency,
+      removeFromCheckedSkills: _removeFromCheckedList,
+      cancelSearch: _cancleSearch,
     );
   }
 
-  Future<void> _updateSkillProficiency(
-    String skillName,
-    int proficiency,
-  ) async {
-    await updateSkillProficiencyUseCase.call(
-      skillName: skillName,
-      proficiency: proficiency,
-    );
-    _getUserSkills();
-  }
-
-  void _addToUserSkills(List<SkillEntity> skill) async {
-    await addSkillsUseCase.call(skill: skill);
-  }
-
-  void _addSkill() async {
-    emit(
-      state.copyWith(
-        userSkillsState: BaseState.success([
-          ...?state.userSkillsState.data,
-          ...state.checkedSkills,
-        ]),
-        selectedSkill: [...state.selectedSkill, ...state.checkedSkills],
-      ),
-    );
-    _clearSearch();
-    _addToUserSkills(state.checkedSkills);
-  }
-
-  void _addToCheckedSkills(SkillEntity skill) {
-    emit(state.copyWith(checkedSkills: [...state.checkedSkills, skill]));
-  }
-
-  void _clearSearch() {
-    emit(
-      state.copyWith(
-        skillSearchState: const BaseState.initial(),
-        isSearching: false,
-      ),
-    );
-  }
-
-  void _searchForSkill(String query) async {
+  @override
+  Future<void> close() {
     _debounceTimer?.cancel();
-    _debounceTimer = Timer(const Duration(milliseconds: 500), () async {
-      if (query.isEmpty) {
-        _clearSearch();
-        return;
-      }
-      emit(
-        state.copyWith(
-          skillSearchState: BaseState.loading(),
-          isSearching: true,
-        ),
-      );
-      await _getAllSkills();
-      final filteredSkills =
-          state.allSkills.data
-              ?.where(
-                (skill) => skill.name.toLowerCase().contains(
-                  query.trim().toLowerCase(),
-                ),
-              )
-              .toList() ??
-          [];
-      emit(state.copyWith(skillSearchState: BaseState.success(filteredSkills)));
-    });
+    return super.close();
   }
 
-  Future<void> _getAllSkills() async {
-    emit(state.copyWith(allSkills: BaseState.loading()));
-    final result = await getallSkillUseCase.call();
-    result.when(
-      success: (skills) =>
-          emit(state.copyWith(allSkills: BaseState.success(skills))),
-      error: (errorMessage) => emit(
-        state.copyWith(
-          allSkills: BaseState.error(
-            Failure(errorMessage ?? 'Unknown error occurred'),
-          ),
-        ),
-      ),
-    );
-  }
+  void _cancleSearch() => emit(state.copyWith(isSearching: false));
 
-  void _getUserSkills() async {
-    emit(state.copyWith(userSkillsState: BaseState.loading()));
+  Future<void> _getStoredSkills() async {
+    emit(state.copyWith(storedSkillsState: BaseState.loading()));
     final result = await getUserSkillsUseCase.call();
     result.when(
       success: (skills) {
         emit(
           state.copyWith(
-            userSkillsState: BaseState.success(skills),
-            selectedSkill: skills,
+            storedSkillsState: BaseState.success(skills),
+            selectedSkill: skills!.toSet(),
           ),
         );
-        log('User skills fetched: ${skills?.length} skills');
+        log("Stored Skills: $skills");
       },
-      error: (errorMessage) {
-        emit(
-          state.copyWith(
-            userSkillsState: BaseState.error(
-              Failure(errorMessage ?? 'Unknown error occurred'),
-            ),
+      error: (errorMessage) => emit(
+        state.copyWith(
+          storedSkillsState: BaseState.error(
+            Failure(errorMessage ?? "Something went wrong"),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
-  void _removeFromCheckedSkills(String skillName) {
+  Future<List<SkillEntity>> _getSearchDataList() async {
+    final searchList = await getSearchSkillsList.call();
+    return searchList.when(
+      success: (data) => data!,
+      error: (errorMessage) => [],
+    );
+  }
+
+  Future<void> _searchForSkill(String skill) async {
+    emit(state.copyWith(isSearching: true));
+    _debounceTimer?.cancel();
+    if (skill.isEmpty) {
+      emit(state.copyWith(filteredSkill: [], isSearching: false));
+      return;
+    }
+    _debounceTimer = Timer(const Duration(seconds: 1), () async {
+      List<SkillEntity> searchList = state.searchData;
+      if (state.searchData.isEmpty) {
+        searchList = await _getSearchDataList();
+      }
+      emit(
+        state.copyWith(
+          searchData: searchList,
+          filteredSkill: searchList
+              .map((e) => e)
+              .where(
+                (element) => element.name.contains(skill.trim().toLowerCase()),
+              )
+              .toList(),
+        ),
+      );
+    });
+  }
+
+  Future<void> _addToCheckList(SkillEntity skill) async {
+    final skills = state.checkedSkills;
+    skills.add(skill);
+    emit(state.copyWith(checkedSkills: skills, canBack: false));
+  }
+
+  Future<void> _removeFromCheckedList(SkillEntity skill) async {
+    final skills = state.checkedSkills;
+    skills.removeWhere((element) => element.name == skill.name);
+    emit(state.copyWith(checkedSkills: skills, canBack: skills.isEmpty));
+  }
+
+  Future<void> _addToSelectedList() async {
+    final selectedSkills = state.selectedSkill;
+    selectedSkills.addAll(state.checkedSkills);
     emit(
       state.copyWith(
-        checkedSkills: state.checkedSkills
-            .where((skill) => skill.name != skillName)
-            .toList(),
+        selectedSkill: selectedSkills,
+        isSearching: false,
+        filteredSkill: [],
       ),
     );
+    addSkillsUseCase.call(skill: state.selectedSkill.toList());
+  }
+
+  Future<void> _removeUserSkill(SkillEntity skill) async {
+    Set<SkillEntity> selectedSkill = state.selectedSkill
+        .where((element) => element.name != skill.name)
+        .toSet();
+    emit(state.copyWith(selectedSkill: selectedSkill));
+    log("Selected Skills: ${state.selectedSkill}");
+    removeUserSkillUseCase.call(skillName: skill.name);
+  }
+
+  Future<void> _updateProficiency(SkillEntity skill) async {
+    await updateSkillProficiencyUseCase.call(
+      skillName: skill.name,
+      proficiency: skill.proficiency,
+    );
+    Set<SkillEntity> selectedSkill = state.selectedSkill;
+    for (var element in selectedSkill) {
+      if (element.name == skill.name) {
+        element.proficiency = skill.proficiency;
+      }
+    }
+    emit(state.copyWith(selectedSkill: selectedSkill));
   }
 }

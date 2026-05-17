@@ -1,10 +1,11 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class SkillEntity extends Equatable {
-  final String name;
-  final int proficiency;
+   String name;
+   int proficiency;
 
-  const SkillEntity({
+   SkillEntity({
     required this.name,
     required this.proficiency,
   });

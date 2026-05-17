@@ -3,6 +3,7 @@ import 'package:career_lens/core/shared/widgets/content_card.dart';
 import 'package:career_lens/core/shared/widgets/custom_button.dart';
 import 'package:career_lens/core/shared/widgets/custom_scaffold.dart';
 import 'package:career_lens/core/ui/colors/app_colors.dart';
+import 'package:career_lens/core/utils/const/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -97,7 +98,7 @@ class _ResultPageState extends State<ResultPage> {
           ),
           const SizedBox(height: 12),
           CustomButton(
-            text: 'Go Back',
+            text: AppStrings.backButtonText,
             padding: 60,
             onPressed: () => context.pop(),
           ),

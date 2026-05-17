@@ -9,28 +9,30 @@ sealed class InputEvent extends Equatable {
   void when({
     required void Function(String query) searchForSkill,
     required void Function() fetchUserSkills,
-    required void Function(SkillEntity skill) addToCheckedSkills,
+    required void Function(SkillEntity skill) addToCheckSkills,
     required void Function() addSkills,
-    required void Function(String skillName) removeSkill,
-    required void Function(String skillName, int proficiency) updateSkillProficiency,
-    required void Function(String skillName) removeFromCheckedSkills
-
+    required void Function(SkillEntity skillName) removeSkill,
+    required void Function(SkillEntity skill) updateSkillProficiency,
+    required void Function(SkillEntity skill) removeFromCheckedSkills,
+    required void Function() cancelSearch,
   }) {
-    if (this is SearchSkills) {
-      searchForSkill((this as SearchSkills).query);
+    if (this is SearchForSkills) {
+      searchForSkill((this as SearchForSkills).query);
     } else if (this is FetchUserSkills) {
       fetchUserSkills();
-    } else if (this is AddToCheckedSkills){
-      addToCheckedSkills((this as AddToCheckedSkills).skill);
-    } else if (this is AddSkills){
+    } else if (this is AddToCheckedSkills) {
+      addToCheckSkills((this as AddToCheckedSkills).skill);
+    } else if (this is AddToSelectedSkills) {
       addSkills();
-    } else if (this is RemoveSkill){
-      removeSkill((this as RemoveSkill).skillName);
-    } else if (this is UpdateSkillProficiency){
+    } else if (this is RemoveSkill) {
+      removeSkill((this as RemoveSkill).skill);
+    } else if (this is UpdateSkillProficiency) {
       final event = this as UpdateSkillProficiency;
-      updateSkillProficiency(event.skillName, event.proficiency);
-    } else if (this is RemoveFromCheckedSkills){
-      removeSkill((this as RemoveFromCheckedSkills).skillName);
+      updateSkillProficiency(event.skill);
+    } else if (this is RemoveFromCheckedSkills) {
+      removeFromCheckedSkills((this as RemoveFromCheckedSkills).skill);
+    } else if (this is CancelSearch) {
+      cancelSearch();
     }
   }
 }
@@ -45,56 +47,44 @@ class AddToCheckedSkills extends InputEvent {
   @override
   List<Object> get props => [skill];
 }
-class AddSkills extends InputEvent {
 
-  const AddSkills();
-
+class AddToSelectedSkills extends InputEvent {
+  const AddToSelectedSkills();
 }
 
 class RemoveFromCheckedSkills extends InputEvent {
-  final String skillName;
+  final SkillEntity skill;
 
-  const RemoveFromCheckedSkills({required this.skillName});
+  const RemoveFromCheckedSkills({required this.skill});
 
   @override
-  List<Object> get props => [skillName];
+  List<Object> get props => [skill];
 }
-class RemoveSkill extends InputEvent {
-  final String skillName;
 
-  const RemoveSkill({required this.skillName});
+class RemoveSkill extends InputEvent {
+  final SkillEntity skill;
+
+  const RemoveSkill({required this.skill});
 
   @override
-  List<Object> get props => [skillName];
+  List<Object> get props => [skill];
 }
 
 class UpdateSkillProficiency extends InputEvent {
-  final String skillName;
-  final int proficiency;
+  final SkillEntity skill;
 
-  const UpdateSkillProficiency({
-    required this.skillName,
-    required this.proficiency,
-  });
+  const UpdateSkillProficiency({required this.skill});
 
   @override
-  List<Object> get props => [skillName, proficiency];
+  List<Object> get props => [skill];
 }
 
-class SearchSkills extends InputEvent {
+class SearchForSkills extends InputEvent {
   final String query;
 
-  const SearchSkills({required this.query});
+  const SearchForSkills({required this.query});
 
   @override
   List<Object> get props => [query];
 }
-
-class SendData extends InputEvent {
-  final List<SkillEntity> skills;
-
-  const SendData({required this.skills});
-
-  @override
-  List<Object> get props => [skills];
-}
+class CancelSearch extends InputEvent {}

@@ -1,50 +1,40 @@
 part of 'input_cubit.dart';
 
-class InputState extends Equatable {
-  final BaseState<List<SkillEntity>> userSkillsState;
-  final BaseState<List<SkillEntity>> skillSearchState;
-  final BaseState<List<SkillEntity>> allSkills;
-  final List<SkillEntity> selectedSkill;
-  final List<SkillEntity> checkedSkills;
-  final List<SkillEntity> filteredSkill;
+class InputState {
   final bool isSearching;
+  final bool canBack;
+  final BaseState<List<SkillEntity>> storedSkillsState;
+  final List<SkillEntity> searchData;
+  final Set<SkillEntity> selectedSkill;
+  final Set<SkillEntity> checkedSkills;
+  final List<SkillEntity> filteredSkill;
   const InputState({
-    this.userSkillsState = const BaseState.initial(),
-    this.skillSearchState = const BaseState.initial(),
-    this.allSkills = const BaseState.initial(),
-    this.selectedSkill = const [],
-    this.checkedSkills = const [],
+    this.storedSkillsState = const BaseState.initial(),
+    this.searchData = const [],
+    this.selectedSkill = const {},
+    this.checkedSkills = const {},
     this.filteredSkill = const [],
     this.isSearching = false,
+    this.canBack = false,
   });
-  @override
-  List<Object> get props => [
-    userSkillsState,
-    skillSearchState,
-    allSkills,
-    selectedSkill,
-    filteredSkill,
-    isSearching,
-    checkedSkills,
-  ];
 
   InputState copyWith({
-    BaseState<List<SkillEntity>>? userSkillsState,
-    BaseState<List<SkillEntity>>? skillSearchState,
-    BaseState<List<SkillEntity>>? allSkills,
-    List<SkillEntity>? selectedSkill,
+    BaseState<List<SkillEntity>>? storedSkillsState,
+    List<SkillEntity>? searchData,
+    Set<SkillEntity>? selectedSkill,
+    Set<SkillEntity>? checkedSkills,
     List<SkillEntity>? filteredSkill,
     bool? isSearching,
-    List<SkillEntity>? checkedSkills,
+    bool? canBack,
   }) {
     return InputState(
-      userSkillsState: userSkillsState ?? this.userSkillsState,
-      skillSearchState: skillSearchState ?? this.skillSearchState,
-      allSkills: allSkills ?? this.allSkills,
+      storedSkillsState: storedSkillsState ?? this.storedSkillsState,
+      searchData: searchData ?? this.searchData,
       selectedSkill: selectedSkill ?? this.selectedSkill,
       filteredSkill: filteredSkill ?? this.filteredSkill,
+      checkedSkills: checkedSkills ?? {},
       isSearching: isSearching ?? this.isSearching,
-      checkedSkills: checkedSkills ?? this.checkedSkills,
+      canBack: canBack ?? this.canBack,
     );
   }
 }

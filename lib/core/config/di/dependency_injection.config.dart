@@ -26,6 +26,8 @@ import 'package:career_lens/features/input/domain/usecases/add_skills_use_case.d
     as _i747;
 import 'package:career_lens/features/input/domain/usecases/get_user_skills_use_case.dart'
     as _i396;
+import 'package:career_lens/features/input/domain/usecases/remove_user_skill_use_case.dart'
+    as _i919;
 import 'package:career_lens/features/input/domain/usecases/search_for_skill_use_case.dart'
     as _i580;
 import 'package:career_lens/features/input/domain/usecases/update_skill_proficiency_use_case.dart'
@@ -66,19 +68,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i129.UpdateSkillProficiencyUseCase>(
       () => _i129.UpdateSkillProficiencyUseCase(gh<_i486.UserSkillsRepo>()),
     );
-    gh.lazySingleton<_i580.SearchForSkillUseCase>(
-      () => _i580.SearchForSkillUseCase(gh<_i199.SkillSearchRepo>()),
+    gh.lazySingleton<_i580.GetSkillsListForSearchUseCase>(
+      () => _i580.GetSkillsListForSearchUseCase(gh<_i199.SkillSearchRepo>()),
+    );
+    gh.lazySingleton<_i919.RemoveUserSkillUseCase>(
+      () => _i919.RemoveUserSkillUseCase(repo: gh<_i486.UserSkillsRepo>()),
     );
     gh.lazySingleton<_i396.GetUserSkillsUseCase>(
       () => _i396.GetUserSkillsUseCase(gh<_i486.UserSkillsRepo>()),
     );
     gh.lazySingleton<_i597.InputCubit>(
       () => _i597.InputCubit(
-        getallSkillUseCase: gh<_i580.SearchForSkillUseCase>(),
+        getSearchSkillsList: gh<_i580.GetSkillsListForSearchUseCase>(),
         getUserSkillsUseCase: gh<_i396.GetUserSkillsUseCase>(),
         addSkillsUseCase: gh<_i747.AddSkillsUseCase>(),
         updateSkillProficiencyUseCase:
             gh<_i129.UpdateSkillProficiencyUseCase>(),
+        removeUserSkillUseCase: gh<_i919.RemoveUserSkillUseCase>(),
       ),
     );
     return this;
