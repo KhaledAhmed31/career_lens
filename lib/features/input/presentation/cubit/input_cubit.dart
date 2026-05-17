@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:career_lens/core/config/base_state/base_state.dart';
 import 'package:career_lens/core/config/errors/failure.dart';
@@ -10,7 +9,6 @@ import 'package:career_lens/features/input/domain/usecases/remove_user_skill_use
 import 'package:career_lens/features/input/domain/usecases/search_for_skill_use_case.dart';
 import 'package:career_lens/features/input/domain/usecases/update_skill_proficiency_use_case.dart';
 import 'package:career_lens/features/input/presentation/cubit/input_event.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -33,7 +31,6 @@ class InputCubit extends Cubit<InputState> {
   }) : super(InputState());
 
   void doIntent(InputEvent intent) {
-    log('Intent: $intent');
     intent.when(
       searchForSkill: _searchForSkill,
       fetchUserSkills: _getStoredSkills,
@@ -65,7 +62,6 @@ class InputCubit extends Cubit<InputState> {
             selectedSkill: skills!.toSet(),
           ),
         );
-        log("Stored Skills: $skills");
       },
       error: (errorMessage) => emit(
         state.copyWith(
@@ -137,25 +133,24 @@ class InputCubit extends Cubit<InputState> {
   }
 
   Future<void> _removeUserSkill(SkillEntity skill) async {
-    Set<SkillEntity> selectedSkill = state.selectedSkill
-        .where((element) => element.name != skill.name)
-        .toSet();
-    emit(state.copyWith(selectedSkill: selectedSkill));
-    log("Selected Skills: ${state.selectedSkill}");
+    state.selectedSkill.removeWhere((element) => element.name == skill.name);
+    emit(state.copyWith(selectedSkill: state.selectedSkill));
     removeUserSkillUseCase.call(skillName: skill.name);
   }
 
   Future<void> _updateProficiency(SkillEntity skill) async {
-    await updateSkillProficiencyUseCase.call(
+    updateSkillProficiencyUseCase.call(
       skillName: skill.name,
       proficiency: skill.proficiency,
     );
-    Set<SkillEntity> selectedSkill = state.selectedSkill;
-    for (var element in selectedSkill) {
+
+    final updatedSkills = state.selectedSkill.map((element) {
       if (element.name == skill.name) {
-        element.proficiency = skill.proficiency;
+        return SkillEntity(name: element.name, proficiency: skill.proficiency);
       }
-    }
-    emit(state.copyWith(selectedSkill: selectedSkill));
+      return element;
+    }).toSet();
+
+    emit(state.copyWith(selectedSkill: updatedSkills));
   }
 }

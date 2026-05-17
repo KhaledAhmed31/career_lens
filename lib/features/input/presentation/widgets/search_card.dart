@@ -38,7 +38,6 @@ class _SearchCardState extends State<SearchCard> {
                         skill: SkillEntity(name: widget.title, proficiency: 0),
                       ),
               );
-              setState(() {});
             },
           ),
         ],

@@ -18,9 +18,11 @@ class AddSkillSection extends StatefulWidget {
 
 class _AddSkillSectionState extends State<AddSkillSection> {
   late TextEditingController _controller;
+  late FocusNode _focusNode;
   @override
   void initState() {
     _controller = TextEditingController();
+    _focusNode = FocusNode();
     super.initState();
   }
 
@@ -37,6 +39,7 @@ class _AddSkillSectionState extends State<AddSkillSection> {
             height: 36,
             child: CustomTextfield(
               hint: AppStrings.textFieldHint,
+              focusNode: _focusNode,
               onChange: (p0) {
                 getIt<InputCubit>().doIntent(SearchForSkills(query: p0));
               },
@@ -52,11 +55,11 @@ class _AddSkillSectionState extends State<AddSkillSection> {
                   if (state) {
                     getIt<InputCubit>().doIntent(CancelSearch());
                     _controller.clear();
-                    FocusScope.of(context).unfocus();
+                    _focusNode.unfocus();
                     return;
                   }
                   getIt<InputCubit>().doIntent(AddToSelectedSkills());
-                  FocusScope.of(context).unfocus();
+                  _focusNode.unfocus();
                   _controller.clear();
                 },
                 text: (state && getIt<InputCubit>().state.isSearching)

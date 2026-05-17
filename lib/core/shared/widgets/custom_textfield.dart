@@ -2,10 +2,17 @@ import 'package:career_lens/core/ui/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextfield extends StatefulWidget {
-  const CustomTextfield({super.key, required this.hint, this.onChange, required this.controller});
+  const CustomTextfield({
+    super.key,
+    required this.hint,
+    this.onChange,
+    required this.controller,
+    required this.focusNode,
+  });
   final String hint;
   final void Function(String)? onChange;
   final TextEditingController controller;
+  final FocusNode focusNode;
   @override
   State<CustomTextfield> createState() => _CustomTextfieldState();
 }
@@ -16,7 +23,8 @@ class _CustomTextfieldState extends State<CustomTextfield> {
     return TextField(
       controller: widget.controller,
       onChanged: widget.onChange,
-      onTapOutside: (event) => FocusScope.of(context).unfocus(),
+      focusNode: widget.focusNode,
+      onTapOutside: (event) => widget.focusNode.unfocus(),
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),

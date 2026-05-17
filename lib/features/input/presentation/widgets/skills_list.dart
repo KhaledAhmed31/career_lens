@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:career_lens/core/config/base_state/base_state.dart';
-import 'package:career_lens/core/config/di/dependency_injection.dart';
 import 'package:career_lens/core/ui/colors/app_colors.dart';
 import 'package:career_lens/features/input/domain/entities/skill_entity.dart';
 import 'package:career_lens/features/input/presentation/cubit/input_cubit.dart';
