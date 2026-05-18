@@ -28,15 +28,14 @@ class _AddSkillSectionState extends State<AddSkillSection> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 36,
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: 36, maxWidth: 480),
+
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(
-            width: 247,
-            height: 36,
+          Expanded(
             child: CustomTextfield(
               hint: AppStrings.textFieldHint,
               focusNode: _focusNode,

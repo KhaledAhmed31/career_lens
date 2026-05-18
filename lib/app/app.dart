@@ -18,6 +18,7 @@ class CareerLensApp extends StatelessWidget {
         statusBarBrightness: Brightness.light,
       ),
       child: MaterialApp.router(
+        useInheritedMediaQuery: true,
         debugShowCheckedModeBanner: false,
         title: 'Career Lens',
         theme: AppTheme.lightTheme,

@@ -44,7 +44,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
         ).textTheme.bodySmall?.copyWith(color: AppColors.grayHint),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 8.0,
-          vertical: 15,
+          vertical: 12,
         ),
       ),
       cursorColor: AppColors.primaryColor,

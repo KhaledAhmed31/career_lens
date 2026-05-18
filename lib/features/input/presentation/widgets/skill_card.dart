@@ -96,8 +96,7 @@ class _SkillCardState extends State<SkillCard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(
-              width: 220, // Set a fixed width for the slider
+            Expanded(
               child: SliderTheme(
                 data: SliderTheme.of(context).copyWith(
                   trackHeight: 8,
@@ -105,11 +104,8 @@ class _SkillCardState extends State<SkillCard> {
                   inactiveTrackColor: Colors.transparent,
                   thumbColor: Colors.white,
                   overlappingShapeStrokeColor: AppColors.primaryColor,
-    
-                  thumbShape: const StrokeThumbShape(
-                    radius: 6,
-                    borderWidth: 5,
-                  ),
+
+                  thumbShape: const StrokeThumbShape(radius: 6, borderWidth: 5),
                 ),
                 child: Container(
                   height: 10,
@@ -120,7 +116,7 @@ class _SkillCardState extends State<SkillCard> {
                     ),
                     borderRadius: BorderRadius.circular(16.0),
                   ),
-    
+
                   child: Slider(
                     padding: EdgeInsets.zero,
                     value: _value,
@@ -149,23 +145,30 @@ class _SkillCardState extends State<SkillCard> {
               ),
             ),
             const SizedBox(width: 12),
-            Text(
-              '${_value.round()}%',
-              style: TextStyle(
-                fontSize: 12,
-                color: AppColors.gray,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(width: 8),
-            Icon(Icons.circle, size: 12, color: statusColor),
-            const SizedBox(width: 4),
-            Text(
-              status,
-              style: TextStyle(
-                fontSize: 12,
-                color: AppColors.gray,
-                fontWeight: FontWeight.w600,
+            SizedBox(
+              width: 95,
+              child: Row(
+                children: [
+                  Text(
+                    '${_value.round()}%',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.gray,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Icon(Icons.circle, size: 12, color: statusColor),
+                  const SizedBox(width: 4),
+                  Text(
+                    status,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.gray,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

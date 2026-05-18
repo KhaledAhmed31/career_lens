@@ -18,7 +18,11 @@ class CustomButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryColor,
         foregroundColor: Colors.white,
-        textStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+        textStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+          letterSpacing: 1.2,
+        ),
         padding: EdgeInsets.symmetric(horizontal: padding, vertical: 10.0),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       ),
