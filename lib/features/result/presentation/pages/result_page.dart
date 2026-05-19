@@ -21,8 +21,6 @@ class _ResultPageState extends State<ResultPage> {
     return CustomScaffold(
       body: ContentCard(
         content: [
-          Text('Result Page', style: Theme.of(context).textTheme.titleMedium),
-          SizedBox(height: 20),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
