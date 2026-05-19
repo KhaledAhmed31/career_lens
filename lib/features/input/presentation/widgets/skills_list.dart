@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:career_lens/core/config/base_state/base_state.dart';
 import 'package:career_lens/core/ui/colors/app_colors.dart';
 import 'package:career_lens/features/input/domain/entities/skill_entity.dart';
@@ -23,7 +21,6 @@ class _SkillsListState extends State<SkillsList> {
   Widget build(BuildContext context) {
     return BlocBuilder<InputCubit, InputState>(
       builder: (context, state) {
-        log("item should be deleted==============================");
         if (state.storedSkillsState.state == StateType.loading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state.isSearching) {

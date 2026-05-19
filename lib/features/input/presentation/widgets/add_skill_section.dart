@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:career_lens/core/config/di/dependency_injection.dart';
 import 'package:career_lens/core/shared/widgets/custom_button.dart';
 import 'package:career_lens/core/shared/widgets/custom_textfield.dart';
@@ -48,7 +46,6 @@ class _AddSkillSectionState extends State<AddSkillSection> {
           const SizedBox(width: 4.0),
           BlocSelector<InputCubit, InputState, bool>(
             builder: (BuildContext context, state) {
-              log("section updated=====================");
               return CustomButton(
                 onPressed: () {
                   if (state) {

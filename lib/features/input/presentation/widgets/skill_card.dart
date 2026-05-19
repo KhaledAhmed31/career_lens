@@ -6,7 +6,6 @@ import 'package:career_lens/features/input/domain/entities/skill_entity.dart';
 import 'package:career_lens/features/input/presentation/cubit/input_cubit.dart';
 import 'package:career_lens/features/input/presentation/cubit/input_event.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
 class StrokeThumbShape extends SliderComponentShape {
   final double radius;
@@ -90,7 +89,11 @@ class _SkillCardState extends State<SkillCard> {
       children: [
         Text(
           widget.title,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: AppColors.primaryColor,
+          ),
         ),
         const SizedBox(height: 8),
         Row(
@@ -148,6 +151,7 @@ class _SkillCardState extends State<SkillCard> {
             SizedBox(
               width: 95,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     '${_value.round()}%',

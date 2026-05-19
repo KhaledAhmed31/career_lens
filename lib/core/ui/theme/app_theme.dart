@@ -18,7 +18,7 @@ class AppTheme {
         ),
         bodySmall: TextStyle(color: AppColors.gray),
       ),
-      scaffoldBackgroundColor: Colors.transparent
+      scaffoldBackgroundColor: Colors.transparent,
     );
   }
 
@@ -36,7 +36,7 @@ class AppTheme {
         ),
         bodySmall: TextStyle(color: AppColors.gray),
       ),
-      scaffoldBackgroundColor: Colors.transparent
+      scaffoldBackgroundColor: Colors.transparent,
     );
   }
 }

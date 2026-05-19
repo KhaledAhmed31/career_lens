@@ -49,7 +49,9 @@ class InputCubit extends Cubit<InputState> {
     return super.close();
   }
 
-  void _cancleSearch() => emit(state.copyWith(isSearching: false));
+  void _cancleSearch() => emit(
+    state.copyWith(isSearching: false, filteredSkill: [], canBack: false),
+  );
 
   Future<void> _getStoredSkills() async {
     emit(state.copyWith(storedSkillsState: BaseState.loading()));
@@ -82,13 +84,13 @@ class InputCubit extends Cubit<InputState> {
   }
 
   Future<void> _searchForSkill(String skill) async {
-    emit(state.copyWith(isSearching: true));
+    emit(state.copyWith(isSearching: true, canBack: true));
     _debounceTimer?.cancel();
     if (skill.isEmpty) {
-      emit(state.copyWith(filteredSkill: [], isSearching: false));
+      _cancleSearch();
       return;
     }
-    _debounceTimer = Timer(const Duration(seconds: 1), () async {
+    _debounceTimer = Timer(const Duration(microseconds: 300), () async {
       List<SkillEntity> searchList = state.searchData;
       if (state.searchData.isEmpty) {
         searchList = await _getSearchDataList();

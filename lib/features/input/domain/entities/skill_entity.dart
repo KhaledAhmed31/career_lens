@@ -1,17 +1,13 @@
 import 'package:equatable/equatable.dart';
 
-// ignore: must_be_immutable
 class SkillEntity extends Equatable {
-   String name;
-   int proficiency;
+  final String name;
+  final int proficiency;
 
-   SkillEntity({
-    required this.name,
-    required this.proficiency,
-  });
+  const SkillEntity({required this.name, required this.proficiency});
 
   @override
-  List<Object> get props => [name, proficiency];
+  List<Object> get props => [name];
 
   @override
   String toString() => 'SkillEntity(name: $name, proficiency: $proficiency)';

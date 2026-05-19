@@ -20,7 +20,7 @@ class CustomButton extends StatelessWidget {
         foregroundColor: Colors.white,
         textStyle: TextStyle(
           fontSize: 12,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
           letterSpacing: 1.2,
         ),
         padding: EdgeInsets.symmetric(horizontal: padding, vertical: 10.0),

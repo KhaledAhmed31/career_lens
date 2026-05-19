@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:career_lens/core/config/di/dependency_injection.dart';
 import 'package:career_lens/core/model/service/career_predictor_service.dart';
 import 'package:career_lens/core/routes/route_path.dart';
@@ -45,16 +43,14 @@ class InputPage extends StatelessWidget {
                   text: AppStrings.sendButtonText,
                   padding: 60,
                   onPressed: () {
-                    final skills =
-                        context
-                            .read<InputCubit>()
-                            .state
-                            .selectedSkill;
+                    final skills = context
+                        .read<InputCubit>()
+                        .state
+                        .selectedSkill;
                     final skillMap = {
                       for (var skill in skills)
                         skill.name: skill.proficiency.toDouble(),
                     };
-                    log('Predicting with skills===============: $skillMap');
                     final result = CareerPredictorService.instance.predict(
                       skillMap,
                     );

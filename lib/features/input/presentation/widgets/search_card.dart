@@ -1,4 +1,5 @@
 import 'package:career_lens/core/config/di/dependency_injection.dart';
+import 'package:career_lens/core/ui/colors/app_colors.dart';
 import 'package:career_lens/features/input/domain/entities/skill_entity.dart';
 import 'package:career_lens/features/input/presentation/cubit/input_cubit.dart';
 import 'package:career_lens/features/input/presentation/cubit/input_event.dart';
@@ -23,10 +24,20 @@ class _SearchCardState extends State<SearchCard> {
         children: [
           Text(
             widget.title,
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: AppColors.primaryColor,
+            ),
           ),
           Checkbox(
             value: isChecked,
+            fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+              if (states.contains(WidgetState.selected)) {
+                return AppColors.primaryColor;
+              }
+              return Colors.transparent;
+            }),
             onChanged: (value) {
               isChecked = !isChecked;
               getIt<InputCubit>().doIntent(
